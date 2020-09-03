@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class SBtest {
+import game.Game;
+
+public class SBtest {
+    public static void main(String[] args) {
+        Game.getInstance().start();
+    }
 }

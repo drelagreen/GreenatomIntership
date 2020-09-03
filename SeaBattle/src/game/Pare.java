@@ -1,9 +1,9 @@
-package game.field;
+package game;
 
 public class Pare<T,F> {
     private final T y;
     private final F x;
-    Pare(T y, F x){
+    public Pare(T y, F x){
         this.y = y;
         this.x = x;
     }
@@ -14,9 +14,4 @@ public class Pare<T,F> {
     public T getY() {
         return y;
     }
-    public Pare<T,F> clone(){
-        return new Pare<>(y,x);
-    }
-
-
 }
