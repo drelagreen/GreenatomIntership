@@ -164,6 +164,8 @@ public class Game {
                 remote = false;
             }
         }
+        Connector.getInstance().closeAll();
+        start();
     }
     private void putShips(Player player){
         for (int i = 0; i < 4; i++) {

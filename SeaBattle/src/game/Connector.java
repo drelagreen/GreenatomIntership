@@ -13,6 +13,7 @@ public class Connector {
     private DataOutputStream dataOutputStream;
     private ExceptionCallback exceptionCallback;
     private Socket socket;
+    private volatile Socket aiSocket;
     public static final int PORT = 7788;
     void initServer(){
         System.out.println("Включаем сервер - порт "+PORT);
@@ -53,6 +54,7 @@ public class Connector {
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             exceptionCallback.call("Ошибка подключения к серверу");
+            return;
         }
         System.out.println("Подключение установлено");
     }
@@ -87,19 +89,29 @@ public class Connector {
     void closeAll(){
         try {
             dataOutputStream.close();
+        } catch (IOException ignored) {}
+        try {
             dataInputStream.close();
+        } catch (IOException ignored) {}
+        try {
             socket.close();
+        } catch (IOException ignored) {}
+        try{
+            aiSocket.close();
         } catch (IOException ignored) {}
     }
 
     public void initAiSocket(){
-        new Thread(()->{
+        new Thread(()-> {
             try {
-                Thread.sleep(500);
-                new Socket("localhost", PORT);
-            } catch (IOException | InterruptedException e) {
+                Thread.sleep(400);
+                aiSocket = new Socket("localhost", PORT);
+            } catch (IOException e) {
+                exceptionCallback.call("");
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }).start();
+        }
+        ).start();
     }
 }
