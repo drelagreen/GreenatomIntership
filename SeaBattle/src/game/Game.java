@@ -208,7 +208,6 @@ public class Game {
 
     private void printMenu() {
         System.out.println("SEA BATTLE \nMENU\n" +
-                "\nNEEDED UTF-8 IN THE TERMINAL!"+
                 "\n1 - Player vs Player (Server)" +
                 "\n2 - Player vs Player (Client)" +
                 "\n3 - Player vs Computer"+

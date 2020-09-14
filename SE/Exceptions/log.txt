@@ -1,5 +1,5 @@
-9/13/20, 7:13 PM
+9/13/20, 8:26 PM
 ArraySizeMoreThan10Exception -> Array size (11) more than 10
 	at MicroArrayListAdapter.checkSize(MicroArrayListAdapter.java:42)
 	at MicroArrayListAdapter.addAll10(MicroArrayListAdapter.java:24)
-	at Main.main(Main.java:8)
+	at Main.main(Main.java:9)

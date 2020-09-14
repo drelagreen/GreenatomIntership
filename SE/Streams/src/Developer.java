@@ -9,7 +9,7 @@ public class Developer {
         this.name = name;
     }
 
-    public List<String> getLanguage() {
+    public List<String> getLanguages() {
         return languages;
     }
 
@@ -23,5 +23,13 @@ public class Developer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "name='" + name + '\'' +
+                ", languages=" + languages +
+                '}';
     }
 }

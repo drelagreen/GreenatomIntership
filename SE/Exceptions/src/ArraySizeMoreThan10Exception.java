@@ -3,17 +3,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ArraySizeMoreThan10Exception extends Exception{
-    @Override
-    public void printStackTrace() {
-        super.printStackTrace();
-    }
+
     public void printStackTrace(String path){
         printStackTrace(new File(path));
     }
-    @Override
-    public void printStackTrace(PrintStream err) {
-        super.printStackTrace(err);
-    }
+
     public void printStackTrace(File file){
             try {
                 printStackTrace();
@@ -22,11 +16,6 @@ public class ArraySizeMoreThan10Exception extends Exception{
                 printStackTrace(ps);
             } catch (FileNotFoundException ignored) {
             }
-    }
-
-    @Override
-    public void printStackTrace(PrintWriter err) {
-        super.printStackTrace(err);
     }
 
     private int size = -1;
@@ -44,5 +33,11 @@ public class ArraySizeMoreThan10Exception extends Exception{
     @Override
     public String toString() {
         return getClass().getName() + " -> " + getLocalizedMessage();
+    }
+
+    @Override
+    public String getLocalizedMessage() {
+        return getMessage()+(System.getProperty("user.language")
+                .equalsIgnoreCase("ru") ? "\nРазмер ArrayList больше чем 10" : "");
     }
 }
