@@ -54,7 +54,7 @@ public class FM {
         }
     }
 
-    private String[] parse(String str) throws Exception {
+    private String[] parse(String str) {
         //todo возможно это все можно засунуь в стрим
         ArrayList<Integer> spaceIndexes = new ArrayList<>();
         char[] strings = str.toCharArray();

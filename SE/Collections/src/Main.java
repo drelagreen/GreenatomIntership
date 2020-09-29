@@ -14,7 +14,7 @@ public class Main {
         Main m = new Main();
         Table<String,String,Long> t = m.getArrayTable();
             for (Table.Cell<String, String, Long> stringStringLongCell : t.cellSet()) {
-                System.out.println(stringStringLongCell+" mills");
+                System.out.println(stringStringLongCell+" ns");
             }
     }
 
@@ -59,9 +59,9 @@ public class Main {
         for (int i = 0; i < 10000; i++) {
             count1 += CollectionTimer.getInstance().search(c, random.nextInt(100000));
             count2 += CollectionTimer.getInstance().remove(c, random.nextInt(100000));
-            count3 += CollectionTimer.getInstance().add(c, random.nextInt(100000), random.nextInt(100000));
+            count3 += CollectionTimer.getInstance().add(c, 0, random.nextInt(100000));
         }
-        return new long[]{count1, count2, count3};
+        return new long[]{count1/10000L, count2/10000L, count3/10000L};
     }
 
 }

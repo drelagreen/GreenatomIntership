@@ -1,12 +1,8 @@
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class CollectionTimer {
-    void fill(){
 
-    }
     static private final CollectionTimer instance = new CollectionTimer();
 
     public static CollectionTimer getInstance() {
@@ -14,24 +10,24 @@ public class CollectionTimer {
     }
 
     public long add(Collection<Integer> c, int index, int element) {
-        long before = System.currentTimeMillis();
+        long before = System.nanoTime();
         if (c instanceof List) {
-            ((List<Integer>) c).add(0, element);
+            ((List<Integer>) c).add(index, element);
         } else {
             c.add(element);
         }
-        return System.currentTimeMillis() - before;
+        return System.nanoTime() - before;
     }
 
     public long search(Collection<Integer> c, int element) {
-        long before = System.currentTimeMillis();
+        long before = System.nanoTime();
         c.contains(element);
-        return System.currentTimeMillis() - before;
+        return System.nanoTime() - before;
     }
 
     public long remove(Collection<Integer> c, int element) {
-        long before = System.currentTimeMillis();
+        long before = System.nanoTime();
         c.remove(element);
-        return System.currentTimeMillis() - before;
+        return System.nanoTime() - before;
     }
 }
