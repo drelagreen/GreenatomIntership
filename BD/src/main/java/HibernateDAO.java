@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class HibernateDAO implements UserBDController {
-    private static final String DEFAULT_SELECT_STATEMENT = "id != 0";
-    private static final String DEFAULT_SELECT_GROUP_BY = "id";
-    private static final String DEFAULT_SELECT_ORDER_BY = "id";
-
     @Override
     @Deprecated
     public User get(UUID uuid) throws SQLException {
@@ -19,10 +15,12 @@ public class HibernateDAO implements UserBDController {
 // TODO: 9/29/2020
     }
 
-    public User get(int id){
-        return HibernateSessionFactory.getSessionFactory()
-                .openSession()
-                .get(User.class, id);
+    public User get(int id) {
+        Session session = HibernateSessionFactory.getSessionFactory()
+                .openSession();
+        User u = session.get(User.class, id);
+        session.close();
+        return u;
     }
 
     @Override
@@ -70,13 +68,14 @@ public class HibernateDAO implements UserBDController {
     @Override
     public List<User> getList(int limit, int page, Column orderBy) throws SQLException {
         List<User> list;
-        Session session = HibernateSessionFactory.getSessionFactory().getCurrentSession();
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
-        Query<User> query = session.createQuery("from User"+" order by "+orderBy == null ?
-                DEFAULT_SELECT_ORDER_BY : orderBy.toString());
+        if (orderBy==null) orderBy = Column.ID;
+        Query<User> query = session.createQuery("from User"+" order by "+ orderBy.toString());
         query.setFirstResult(limit*page);
         query.setMaxResults(limit);
         list = query.list();
+        HibernateSessionFactory.getSessionFactory().close();
         return list;
     }
 

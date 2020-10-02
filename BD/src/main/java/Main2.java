@@ -1,10 +1,5 @@
-import org.hibernate.mapping.Array;
-
 import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.UUID;
 
 public class Main2 {
@@ -13,7 +8,7 @@ public class Main2 {
     private static final String PASS = "root";
 
     public static void main(String[] args) {
-        UserBDController controller = new PostgresqlUserBDController();
+        UserBDController controller = new HibernateDAO();
         controller.connect(DB_URL,USER,PASS);
 
         User user1 = new User();

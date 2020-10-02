@@ -4,7 +4,7 @@ import java.util.Random;
 public class Main {
     static final String DB_URL = "jdbc:postgresql://127.0.0.1:5432/my_database";
     static final String USER = "postgres";
-    static final String PASS = "";
+    static final String PASS = "root";
 
     public static void main(String[] args) {
         try {
