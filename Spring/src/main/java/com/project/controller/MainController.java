@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.UUID;
 
 @Controller
-@PreAuthorize("hasAuthority('USER')")
 public class MainController {
     @Autowired
     private MessageRepo messageRepo;
