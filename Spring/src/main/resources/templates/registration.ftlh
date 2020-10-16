@@ -7,10 +7,14 @@
     </div>
     <div class="mt-4">
         <#if message??>
-            ${message}
+            <div>
+                <b>
+                    ${message}
+                </b>
+            </div>
         <#else>
         </#if>
-        <@l.login "/login" false/>
+        <@l.login_form "/registration" false/>
     </div>
 
 </@c.page>

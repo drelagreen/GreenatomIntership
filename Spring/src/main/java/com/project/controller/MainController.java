@@ -54,6 +54,9 @@ public class MainController {
             @RequestParam String text,
             @RequestParam String tag, Map<String,Object> model
     ) throws IOException {
+        if (!user.isActive()){
+            return "redirect:/main";
+        }
         if (tag==null || tag.isEmpty()){
             tag = "none";
         }
@@ -78,4 +81,5 @@ public class MainController {
         model.put("messages",messages);
         return "redirect:/main";
     }
+
 }

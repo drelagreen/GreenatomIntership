@@ -20,7 +20,11 @@
             </li>
             </#if>
         </ul>
-        <@l.logout/>
+            <#if name!="guest">
+                <@l.logout/>
+            <#else>
+                <@l.login/>
+        </#if>
         <div class="navbar-text">${name}</div>
     </div>
 </nav>

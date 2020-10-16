@@ -5,7 +5,14 @@
     <div class="h5">
         <h5>Login Page</h5>
     </div>
+    <#if message??>
+        <div>
+            <b>
+                ${message}
+            </b>
+        </div>
+    </#if>
     <div class="mt-4">
-        <@l.login "/login" true/>
+        <@l.login_form "/login" true/>
     </div>
 </@c.page>

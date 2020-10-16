@@ -43,8 +43,8 @@
     </div>
 
     <div class="card-columns">
+    <#if messages??>
         <#list messages as message>
-            <#if messages??>
             <div class="card my-3">
                 <div class="card-img-top text-center">
                     <#if message.filename??>
@@ -61,10 +61,10 @@
                     </div>
                 </div>
             </div>
-            <#else>
-                No messages
-            </#if>
         </#list>
+    <#else>
+        No messages
+    </#if>
 
     </div>
 </@c.page>
