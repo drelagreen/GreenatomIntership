@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -21,9 +22,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     private MailSender mailSender;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username);
+        User user = userRepo.findByUsername(username);
+        if (user == null){
+            throw new UsernameNotFoundException("User not found");
+        }
+        return user;
     }
 
     public boolean addUser(User user){
@@ -33,6 +41,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(false);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
@@ -65,7 +74,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<User> findAll() {
-        return null;
+        return userRepo.findAll();
     }
 
     public void saveUser(User user, String username, Map<String, String> form) {
@@ -100,10 +109,12 @@ public class UserService implements UserDetailsService {
         }
 
         if(!StringUtils.isEmpty(password)){
-            user.setPassword(password);
+            user.setPassword(passwordEncoder.encode(password));
         }
 
         userRepo.save(user);
-        sendMessage(user);
+        if (isEmailChanged) {
+            sendMessage(user);
+        }
     }
 }

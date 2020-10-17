@@ -5,11 +5,16 @@
     <div class="h5">
         <h5>Login Page</h5>
     </div>
+
     <#if message??>
-        <div>
-            <b>
-                ${message}
-            </b>
+        <div class="alert alert-success" role="alert">
+            ${message}
+        </div>
+    </#if>
+
+    <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
+        <div class="alert alert-danger" role="alert">
+            ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
         </div>
     </#if>
     <div class="mt-4">
