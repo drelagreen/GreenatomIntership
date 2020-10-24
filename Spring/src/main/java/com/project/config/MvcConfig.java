@@ -21,10 +21,12 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        String res = System.getProperty("os.name").contains("Win")?("file:/"+uploadPath+"/"):("file://"+uploadPath+"/");
         registry.addResourceHandler("/static/**")
                 .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/img/**")
-                .addResourceLocations("file:/"+uploadPath+"/");
+                .addResourceLocations(res);
+        System.out.println("Res location - "+res);
     }
 
     @Override

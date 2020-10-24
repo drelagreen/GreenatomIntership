@@ -1,5 +1,5 @@
-<#include  "security.ftlh">
-<#import "login.ftlh" as l >
+<#include  "security.ftlh" />
+<#import "login.ftlh" as l />
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="navbar-brand">Tawee</div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,6 +22,9 @@
             <#if user??>
                 <li class="nav-item">
                     <a class="nav-link" href="/user/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user-messages/${currentUserId}">My messages</a>
                 </li>
             </#if>
         </ul>

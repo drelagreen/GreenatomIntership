@@ -1,4 +1,4 @@
-<#import "parts/common.ftlh" as c>
+<#import "parts/common.ftlh" as c/>
 
 <@c.page>
     <form method="post">
@@ -27,7 +27,7 @@
 
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <div>
-                <button class="btn btn-primary mt-2" type="submit">"Save"</button>
+                <button class="btn btn-primary mt-2" type="submit">Save</button>
             </div>
         </form>
     </form>
