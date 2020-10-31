@@ -1,9 +1,12 @@
 package com.project.domain;
 
+import com.project.domain.util.MessageHelper;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Message {
@@ -23,6 +26,14 @@ public class Message {
     private User author;
     private String filename;
 
+    @ManyToMany
+    @JoinTable(
+            name = "messageLikes",
+            joinColumns = { @JoinColumn(name = "message_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id")}
+    )
+    private Set<User> likes = new HashSet<>();
+
     public Message(){}
     public Message(String text, String tag, User user) {
         this.author = user;
@@ -39,8 +50,8 @@ public class Message {
         this.filename = filename;
     }
 
-    public String getAuthorName(){
-        return author !=null ? author.getUsername() : "<none>";
+    public String getAuthorName() {
+        return MessageHelper.getAuthorName(author);
     }
 
     public String getText() {
@@ -74,4 +85,13 @@ public class Message {
     public void setAuthor(User author) {
         this.author = author;
     }
+
+    public Set<User> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Set<User> likes) {
+        this.likes = likes;
+    }
+
 }

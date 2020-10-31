@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: com.project.MainControllerTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 3.252 s <<< FAILURE! - in com.project.MainControllerTest
+filterMessageTest  Time elapsed: 0.736 s  <<< ERROR!
+org.xml.sax.SAXParseException: The reference to entity "size" must end with the ';' delimiter.
+	at com.project.MainControllerTest.filterMessageTest(MainControllerTest.java:58)
+
+mainPageTest  Time elapsed: 0.247 s  <<< ERROR!
+org.xml.sax.SAXParseException: The reference to entity "size" must end with the ';' delimiter.
+	at com.project.MainControllerTest.mainPageTest(MainControllerTest.java:42)
+
+addMessageToListTest  Time elapsed: 0.018 s  <<< ERROR!
+org.xml.sax.SAXParseException: Premature end of file.
+	at com.project.MainControllerTest.addMessageToListTest(MainControllerTest.java:74)
+
+messageListTest  Time elapsed: 0.136 s  <<< ERROR!
+org.xml.sax.SAXParseException: The reference to entity "size" must end with the ';' delimiter.
+	at com.project.MainControllerTest.messageListTest(MainControllerTest.java:50)
+

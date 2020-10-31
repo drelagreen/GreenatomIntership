@@ -62,8 +62,8 @@ public class RegistrationController {
         }
 
 
-        boolean isPasswordsEquals = user.getPassword() != null && !user.getPassword().equals(passwordConfirm);
-        if (isPasswordsEquals){
+        boolean isPasswordsEquals = user.getPassword() != null && user.getPassword().equals(passwordConfirm);
+        if (!isPasswordsEquals){
             model.addAttribute("passwordError", "Passwords are different");
         }
 
@@ -88,11 +88,11 @@ public class RegistrationController {
     public String activate(Model model, @PathVariable String code){
         boolean isActivated  = userService.activateUser(code);
         if (isActivated) {
-            model.addAttribute("message", "User has been successfully activated!");
+            model.addAttribute("message1", "User has been successfully activated!");
         } else {
-            model.addAttribute("message", "Activation code is not found!");
+            model.addAttribute("message1", "Activation code is not found!");
         }
-        return "redirect:/login";
+        return "/login";
     }
 
 }

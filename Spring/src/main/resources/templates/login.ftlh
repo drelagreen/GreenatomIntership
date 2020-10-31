@@ -6,16 +6,16 @@
         <h5>Login Page</h5>
     </div>
 
-    <#if message??>
+    <#if message1??>
         <div class="alert alert-success" role="alert">
-            ${message}
+            ${message1}
         </div>
-    </#if>
-
-    <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
-        <div class="alert alert-danger" role="alert">
-            ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
-        </div>
+        <#else>
+            <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
+                <div class="alert alert-danger" role="alert">
+                    ${Session.SPRING_SECURITY_LAST_EXCEPTION.message}
+                </div>
+            </#if>
     </#if>
     <div class="mt-4">
         <@l.login_form "/login" true/>

@@ -1044,6 +1044,7 @@ true posixrules
     </table>
     <table id="50" parent="18" name="message">
       <ObjectId>32975</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>1174</StateNumber>
     </table>
@@ -1064,11 +1065,13 @@ true posixrules
     </table>
     <table id="54" parent="18" name="user_subscriptions">
       <ObjectId>41196</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>1498</StateNumber>
     </table>
     <table id="55" parent="18" name="usr">
       <ObjectId>32986</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>1174</StateNumber>
     </table>
